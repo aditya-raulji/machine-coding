@@ -41,6 +41,6 @@ app.delete('/users/:id', (req,res) =>{
     })
 })
 
-app.listen(() => {
+app.listen(PORT ,() => {
     console.log(`Serverr is running${PORT}`);
 })
