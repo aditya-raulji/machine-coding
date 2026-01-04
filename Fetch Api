@@ -1,0 +1,36 @@
+import { useEffect, useState } from "react";
+import "./styles.css";
+
+function App() {
+  const [data, setData] = useState([]);
+
+  const fetchApi = async () => {
+    const url =
+      "https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json";
+    const response = await fetch(url);
+    const result = await response.json();
+
+    setData(result);
+  };
+
+  useEffect(() => {
+    fetchApi();
+  }, []);
+
+  return (
+    <>
+      <div>
+        <p>Fetching Api</p>
+        <div>
+          <ul>
+            {data.map((item, index) => (
+              <li key={index}>{item.name}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default App;
