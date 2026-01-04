@@ -1,0 +1,38 @@
+import { useState } from "react";
+import "./styles.css";
+
+function App() {
+  const [page, setPage] = useState(1);
+  const data = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`);
+
+  const itemPerPage = 5;
+
+  const lastIndex = page * itemPerPage;
+  const firstIndex = lastIndex - itemPerPage;
+
+  const currentPage = data.slice(firstIndex, lastIndex);
+  const totalPage = Math.ceil(data.length / itemPerPage);
+
+  return (
+    <>
+      <div>
+        <p>Pagination</p>
+        <div>
+          <ul>
+            {currentPage.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+
+          <button onClick={() => setPage(page - 1)}>prev</button>
+          <span>
+            {page} of {totalPage}
+          </span>
+          <button onClick={() => setPage(page + 1)}>Next</button>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default App;
