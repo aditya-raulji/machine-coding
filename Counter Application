@@ -1,0 +1,43 @@
+import { useState } from "react";
+import "./styles.css";
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  const MAX = 10;
+  const MIN = 0;
+
+  const increament = () => {
+    if (count <= MAX) {
+      setCount(count + 1);
+    }
+  };
+
+  const decreament = () => {
+    if (count >= MIN) {
+      setCount(count - 1);
+    }
+  };
+
+  const reset = () => {
+    setCount(0);
+  };
+
+  return (
+    <>
+      <div className="Counter">
+        <p>Counter Application</p>
+        <h2>Count : {count}</h2>
+        <button onClick={increament} disabled={count === MAX}>
+          Increamnet
+        </button>
+        <button onClick={decreament} disabled={count === MIN}>
+          Decreament
+        </button>
+        <button onClick={reset}>Reset</button>
+      </div>
+    </>
+  );
+}
+
+export default App;
